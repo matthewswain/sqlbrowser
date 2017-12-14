@@ -11,6 +11,7 @@ def __query_sql_browser(hostname):
     msg = b"\x02"
 
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.settimeout(15)
     s.sendto(msg, (hostname, port))
     resp = s.recvfrom(1000000)[0][3:]
 
